@@ -1,0 +1,15 @@
+{
+  "name": "appliances-catalogue-tools",
+  "private": true,
+  "type": "module",
+  "description": "Подготовка 3D-моделей для WebAR-каталога",
+  "scripts": {
+    "models": "node prepare-models.mjs",
+    "posters": "node render-posters.mjs"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "^4.2.1",
+    "@gltf-transform/extensions": "^4.2.1",
+    "@gltf-transform/functions": "^4.2.1"
+  }
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AR-Техника — WebAR-каталог бытовой техники</title>
+  <meta name="description" content="Каталог бытовой техники с примеркой товаров в дополненной реальности прямо в браузере смартфона.">
+  <meta name="theme-color" content="#0f4c81">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="vendor/model-viewer.min.js"></script>
+  <script src="vendor/qrcode.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#/" aria-label="На главную">
+      <img src="assets/icon.svg" alt="" width="32" height="32">
+      <span>AR-Техника</span>
+    </a>
+    <nav class="topnav">
+      <a href="#/">Каталог</a>
+      <a href="#/favorites">Избранное <span class="badge" id="fav-count" hidden></span></a>
+      <a href="#/help">Как работает AR</a>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <p class="loading">Загрузка каталога…</p>
+  </main>
+
+  <footer class="footer">
+    <p>WebAR-каталог бытовой техники · курсовая работа, РТУ МИРЭА, 2026</p>
+    <p>3D-модели: Kenney Furniture Kit (CC0) · просмотр и AR: &lt;model-viewer&gt; (BSD-3-Clause)</p>
+  </footer>
+</body>
+</html>
