@@ -126,6 +126,7 @@ model-viewer {
 .specs th, .specs td { padding: 9px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 .specs th { color: var(--muted); font-weight: 400; width: 50%; padding-right: 12px; }
 .specs.small { font-size: 14px; }
+.specs.small td { white-space: nowrap; }
 .specs tr.bad td { color: var(--bad); font-weight: 600; }
 
 .fit { margin-top: 24px; background: var(--surface); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
