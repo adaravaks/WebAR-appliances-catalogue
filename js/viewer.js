@@ -14,7 +14,7 @@ export function createViewer(product) {
   const viewer = document.createElement('model-viewer');
   Object.entries({
     src: `models/${product.id}.glb`,
-    // Статический USDZ для iOS: только для него Quick Look соблюдает запрет масштабирования.
+    // Заранее подготовленный USDZ для iOS: Quick Look не ждёт конвертации модели на устройстве.
     'ios-src': `usdz/${product.id}-0.usdz`,
     poster: `posters/${product.id}.webp`,
     alt: `3D-модель: ${product.title} ${product.model}`,
