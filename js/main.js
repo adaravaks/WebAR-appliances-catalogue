@@ -154,7 +154,7 @@ function renderProduct(id) {
         ${p.colors?.length > 1 ? `
         <h2 class="h3">Цвет: <span id="color-name">${esc(p.colors[0].name)}</span></h2>
         <div class="swatches">
-          ${p.colors.map((c, i) => `<button class="swatch ${i === 0 ? 'active' : ''}" style="--c:${c.hex}" data-hex="${c.hex}" data-name="${esc(c.name)}" aria-label="${esc(c.name)}"></button>`).join('')}
+          ${p.colors.map((c, i) => `<button class="swatch ${i === 0 ? 'active' : ''}" style="--c:${c.hex}" data-index="${i}" data-name="${esc(c.name)}" aria-label="${esc(c.name)}"></button>`).join('')}
         </div>` : ''}
 
         <p class="note" id="ar-mobile-note" hidden>Этот браузер не поддерживает AR. Откройте страницу в Safari (iPhone) или Chrome (Android).</p>
@@ -187,12 +187,12 @@ function renderProduct(id) {
   const stage = app.querySelector('#stage');
   stage.prepend(viewer);
 
-  // Цвет корпуса: меняется материал модели; в AR (Quick Look / WebXR) попадёт выбранный цвет.
-  if (p.colors?.length) setBodyColor(viewer, p.colors[0].hex);
+  // Цвет корпуса: меняется материал модели и USDZ-файл для Quick Look — в AR попадёт выбранный цвет.
+  if (p.colors?.length) setBodyColor(viewer, p, 0);
   app.querySelectorAll('.swatch').forEach((sw) => sw.addEventListener('click', () => {
     app.querySelectorAll('.swatch').forEach((s) => s.classList.toggle('active', s === sw));
     app.querySelector('#color-name').textContent = sw.dataset.name;
-    setBodyColor(viewer, sw.dataset.hex);
+    setBodyColor(viewer, p, Number(sw.dataset.index));
   }));
 
   app.querySelector('#dims-toggle').addEventListener('change', (e) => toggleDimensions(viewer, e.target.checked));

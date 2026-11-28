@@ -14,7 +14,7 @@
 - каталог из 15 товаров в 4 категориях: фильтр по категории, поиск, сортировка;
 - интерактивный 3D-просмотр модели: вращение, масштабирование, автоповорот;
 - AR-примерка в реальном масштабе 1:1:
-  - iPhone / iPad — AR Quick Look (ARKit), USDZ-файл формируется на лету;
+  - iPhone / iPad — AR Quick Look (ARKit), заранее подготовленные USDZ-файлы для каждого цвета;
   - Android — WebXR Device API или Google Scene Viewer (ARCore);
 - выбор цвета корпуса: выбранный цвет попадает и в AR;
 - отображение габаритных размеров прямо на модели;
@@ -45,6 +45,7 @@ js/viewer.js            — работа с <model-viewer>: AR, цвет, раз
 data/catalog.json       — товары, категории, габариты, цвета
 models/*.glb            — подготовленные 3D-модели (реальный масштаб)
 posters/*.webp          — превью товаров для каталога
+usdz/*.usdz             — модели для AR Quick Look (iOS), по файлу на каждый цвет
 vendor/                 — model-viewer и генератор QR-кодов
 tools/                  — скрипты подготовки моделей и превью
 tools/source-models/    — исходные модели Kenney Furniture Kit (CC0)
@@ -68,6 +69,7 @@ cd tools
 npm install
 npm run models    # source-models/*.glb → ../models/*.glb (реальный масштаб, PBR)
 npm run posters   # ../models/*.glb → ../posters/*.webp
+npm run usdz      # ../models/*.glb → ../usdz/<id>-<цвет>.usdz для iOS
 ```
 
 Габариты, цвета и материалы корпуса задаются в `data/catalog.json`.

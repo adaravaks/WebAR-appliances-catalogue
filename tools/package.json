@@ -5,11 +5,13 @@
   "description": "Подготовка 3D-моделей для WebAR-каталога",
   "scripts": {
     "models": "node prepare-models.mjs",
-    "posters": "node render-posters.mjs"
+    "posters": "node render-posters.mjs",
+    "usdz": "node export-usdz.mjs"
   },
   "dependencies": {
     "@gltf-transform/core": "^4.2.1",
     "@gltf-transform/extensions": "^4.2.1",
-    "@gltf-transform/functions": "^4.2.1"
+    "@gltf-transform/functions": "^4.2.1",
+    "three": "^0.183.2"
   }
 }

@@ -14,6 +14,8 @@ export function createViewer(product) {
   const viewer = document.createElement('model-viewer');
   Object.entries({
     src: `models/${product.id}.glb`,
+    // Статический USDZ для iOS: только для него Quick Look соблюдает запрет масштабирования.
+    'ios-src': `usdz/${product.id}-0.usdz`,
     poster: `posters/${product.id}.webp`,
     alt: `3D-модель: ${product.title} ${product.model}`,
     ar: '',
@@ -57,8 +59,13 @@ export function createViewer(product) {
   return viewer;
 }
 
-/** Меняет цвет материала корпуса (материал с именем «body» в glTF-модели). */
-export function setBodyColor(viewer, hex) {
+/**
+ * Меняет цвет корпуса: материал «body» в 3D-сцене и USDZ-файл для AR Quick Look,
+ * заранее подготовленный для этого цвета (tools/export-usdz.mjs).
+ */
+export function setBodyColor(viewer, product, index) {
+  const hex = product.colors[index].hex;
+  viewer.setAttribute('ios-src', `usdz/${product.id}-${index}.usdz`);
   const apply = () => {
     const body = viewer.model?.materials.find((m) => m.name === 'body');
     body?.pbrMetallicRoughness.setBaseColorFactor(hex);
